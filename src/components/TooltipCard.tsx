@@ -1,6 +1,5 @@
 // * /components/TooltipCard.tsx * //
 import React from 'react';
-import { formatStatName } from '../utils/formatStatName';
 
 
 interface TooltipData {
@@ -19,7 +18,7 @@ interface TooltipData {
 }
 
 const TooltipCard: React.FC<{ tooltip: TooltipData }> = ({ tooltip }) => {
-  const { label, rank, maxRank, x, y, icon, statKey, value, isPercent, isNegative } = tooltip;
+  const { label, rank, maxRank, x, y, icon, value, isPercent, isNegative } = tooltip;
 
   const formatted = (val: number): string => {
     const symbol = isNegative && val > 0 ? '-' : val > 0 ? '+' : '';
@@ -78,7 +77,7 @@ const TooltipCard: React.FC<{ tooltip: TooltipData }> = ({ tooltip }) => {
             marginBottom: 16,
           }}
         >
-          <img src={`/components/icons/${icon}`} alt={label} style={{ width: 110, height: 110 }} />
+          <img src={`${import.meta.env.BASE_URL}/components/icons/${icon}`} alt={label} style={{ width: 110, height: 110 }} />
         </div>
       </div>
 

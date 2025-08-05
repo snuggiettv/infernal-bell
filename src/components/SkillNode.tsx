@@ -23,7 +23,7 @@ interface SkillNodeProps {
 
 export default function SkillNode({ id, data }: SkillNodeProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const { isLocked, rank, maxRank, value } = data;
+  const { isLocked, rank, maxRank} = data;
   const isMaxed = rank >= maxRank;
 
   const showTooltip = (overrideRank = rank) => {
@@ -34,9 +34,7 @@ export default function SkillNode({ id, data }: SkillNodeProps) {
     const y = rect.top;
 
     const safeRank = Math.min(overrideRank, maxRank);
-    const currentValue = safeRank * value;
-    const nextValue = safeRank < maxRank ? (safeRank + 1) * value : currentValue;
-
+    
     data.onHover?.({
       id,
       label: data.label,
@@ -100,7 +98,7 @@ export default function SkillNode({ id, data }: SkillNodeProps) {
       }}
     >
       <img
-        src={`/components/icons/${data.icon}`}
+        src={`${import.meta.env.BASE_URL}/components/icons/${data.icon}`}
         alt={data.label}
         style={{
           width: '100%',
